@@ -2,9 +2,10 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, redirect, url_for
 import openaq_py
+import os
 
 APP = Flask(__name__)
-APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+APP.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 DB = SQLAlchemy(APP)
 API = openaq_py.OpenAQ()
 STATUS, BODY = API.measurements(city='Los Angeles', parameter='pm25')
