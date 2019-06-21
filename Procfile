@@ -1,1 +1,1 @@
-web: gunicorn aqdb:APP -t 120
+web: gunicorn aqdb_pkg:APP -t 120
